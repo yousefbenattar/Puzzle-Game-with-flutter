@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:puzzel_application/moreapps.dart';
 
 void main() {
   runApp(const MainApp());
@@ -42,12 +43,12 @@ class NavBar extends StatelessWidget {
         ListTile(
           leading: const Icon(Icons.switch_account),
           title: const Text('Account'),
-          onTap: () => print('Click on Account'),
+          onTap: () {Navigator.push(context , MaterialPageRoute(builder : (context) => MoreApps()));},
         ),
         ListTile(
           leading: const Icon(Icons.more),
           title: const Text('More App'),
-          onTap: () => print('More App'),
+          onTap: () {Navigator.push(context , MaterialPageRoute(builder: (context) => const MoreApps()));},
         ),
         ListTile(
           leading: const Icon(Icons.exit_to_app),
@@ -59,27 +60,3 @@ class NavBar extends StatelessWidget {
   }
 }
 
-class MoreApps extends StatelessWidget {
-  const MoreApps({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: GridView.count(
-          crossAxisCount: 2,
-        children: 
-          List.generate(100, (index) {
-    return Center(
-      child: Text(
-        'Item $index',
-        style: Theme.of(context).textTheme.headlineSmall,
-      ),
-    );
-  }),
-        
-        ),
-      ),
-    );
-  }
-}
